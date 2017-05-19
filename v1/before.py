@@ -1,5 +1,6 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
+import sys
+import os
+sys.path.append(os.path.abspath('../lib'))
 
 import numpy as np
 import csv
@@ -7,9 +8,9 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 style.use('ggplot')
 
-from lib.file import *
+from file_functions import *
 
-DATASETS_PATH = './assets/datasets/'
+DATASETS_PATH = '../assets/datasets/'
 FILENAME = 'example1.csv'
 COLOR = 'b'
 
@@ -26,6 +27,3 @@ for point in dataset:
     )
 
 plt.show()
-
-
-			

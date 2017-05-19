@@ -1,5 +1,6 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
+import sys
+import os
+sys.path.append(os.path.abspath('../lib'))
 
 import matplotlib.pyplot as plt
 from matplotlib import style
@@ -7,10 +8,10 @@ style.use('ggplot')
 import numpy as np
 import csv
 
-from lib.file import *
-from lib.K_Means import K_Means
+from file_functions import *
+from K_Means import K_Means
 
-DATASETS_PATH = './assets/datasets/'
+DATASETS_PATH = '../assets/datasets/'
 FILENAME = 'example1.csv'
 COLORS = 10 * ['g', 'r', 'c', 'b', 'k']
 K = 3
