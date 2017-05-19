@@ -1,6 +1,8 @@
 import numpy as np
+from random import randint
 
 class K_Means:
+
     """ tol : how much that centroide is gona moove (tolerance)
         max_iter : how many times we wan't to run it before it's ok
     """
@@ -8,13 +10,10 @@ class K_Means:
         self.k = k
         self.tol = tol
         self.max_iter = max_iter
-
-    def fit(self, data):
         self.centroids = {}
 
-        # for each clusters
-        for i in range(self.k):
-            self.centroids[i] = data[i]
+    def fit(self, data):
+        self._init_centroids(data)
 
         # for each iteration
         for i in range(self.max_iter):
@@ -46,11 +45,15 @@ class K_Means:
             if optimized:
                 break
 
-    def predict(self, data):
-        distances = [np.linalg.norm(data - self.centroids[centroid]) for centroid in self.centroids]
-        classification = distances.index(min(distances))
-        return classification
 
-
-
+    def _init_centroids(self, data):
+        previous_random = []
+        while len(self.centroids) < self.k:
+            r = randint(0, len(data))
+            if r not in previous_random:
+                self.centroids[len(previous_random)] = data[r]
+                previous_random.append(r)
+			
+			
+			
 			
