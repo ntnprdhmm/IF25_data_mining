@@ -14,13 +14,14 @@ DATA_FILENAME = 'example4.csv'
 LABELS_FILENAME = 'example4_labels.csv'
 
 RESULTS_PATH = "results"
-RESULTS_BASENAME = "cluster_"
+RESULTS_BASENAME = 'cluster_'
+CRUDE_RESULTS_BASENAME = "crude_cluster_"
 K = 6
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME)
 dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME)
 
-dataset = normalize(dataset)
+normalized_columns, normalizations_values, dataset = normalize(dataset)
 print(dataset)
 
 X = np.array(dataset)
@@ -34,16 +35,31 @@ empty_dir(RESULTS_PATH)
 for classification in clf.classifications:
     print("\n===== CLUSTER " + str(classification) + " =====")
 
-    feature_percentage = len(clf.classifications[classification]) / len(dataset) * 100
-    print(feature_percentage)
+    # write crud features of this cluster
 
-    f = open(RESULTS_PATH + "/" + RESULTS_BASENAME + str(classification) + ".out", 'a')
-
-    f.write("CLUSTER COORDINATES : " + ",".join([str(v) for v in clf.centroids[classification]]) + "\n")
-    f.write("PERCENTAGE : " + str(feature_percentage) + "\n\n")
+    f = open(RESULTS_PATH + "/" + CRUDE_RESULTS_BASENAME + str(classification) + ".out", 'a')
 
     for featureset in clf.classifications[classification]:
         f.write(",".join([str(v) for v in featureset]) + "\n")
+
+    f.close()
+
+    # write unnormalized features of this cluster
+
+    print(normalized_columns)
+
+    f = open(RESULTS_PATH + "/" + RESULTS_BASENAME + str(classification) + ".out", 'a')
+
+    for featureset in clf.classifications[classification]:
+        values = []
+
+        for i in range(len(featureset)):
+            if i in normalizations_values:
+                values.append(normalizations_values[i][featureset[i]])
+            else:
+                values.append(str(featureset[i]))
+
+        f.write(",".join(values) + "\n")
 
     f.close()
 
