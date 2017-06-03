@@ -1,1 +1,2 @@
 Name,user_Id,sum(t.isRetweet),sum(t.nbcontributors),sum(t.nbhashtags),sum(t.nbmediaEntities),sum(t.nbmentionEntities),sum(t.nbURLEntities),sum(t.nbextendedMediaEntities)
+,,m,m,m,m,m,m,m

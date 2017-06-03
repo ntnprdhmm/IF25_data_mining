@@ -8,6 +8,7 @@ def read_csv_dataset(f):
 	readfile = open(f, 'r')
 	readlines = readfile.readlines()
 	for line in readlines:
+		line = line.rstrip() # remove the \n
 		row = []
 		for v in line.split(','):
 			row.append(float(v) if isfloat(v) else v)

@@ -33,3 +33,13 @@ def get_col_values_percentages(dataset, col):
         dic[value] = dic[value] / len(dataset)
 
     return dic
+
+""" Return a formatted string from a dic
+"""
+def stringify_dic(dic):
+    key_values = []
+
+    for k in dic:
+        key_values.append(k + ": " + str(dic[k]))
+
+    return '\n'.join(key_values)

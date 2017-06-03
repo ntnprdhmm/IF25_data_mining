@@ -1,5 +1,6 @@
 import sys
 import os
+import time
 sys.path.append(os.path.abspath('../lib'))
 
 import numpy as np
@@ -17,13 +18,17 @@ LABELS_FILENAME = 'example3_labels.csv'
 RESULTS_PATH = "results"
 RESULTS_BASENAME = 'cluster_'
 CRUDE_RESULTS_BASENAME = "crude_cluster_"
-K = 4
+STATS_RESULTS_BASENAME = "stats_cluster_"
+STATS_PERCENTAGE_SYMBOL = "p"
+STATS_MEAN_SYMBOL = "m"
+K = 5
 
-labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME)[0]
+labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME)
+labels_names = labels[0]
+labels_stats = labels[1]
 dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME)
 
 normalized_columns, normalizations_values, dataset = normalize(dataset)
-print(labels)
 
 X = np.array(dataset)
 
@@ -36,18 +41,23 @@ empty_dir(RESULTS_PATH)
 for classification in clf.classifications:
     print("\n===== CLUSTER " + str(classification) + " =====")
 
-    # write crud features of this cluster
+    # write crude features of this cluster
 
-    f = open(RESULTS_PATH + "/" + CRUDE_RESULTS_BASENAME + str(classification) + ".out", 'a')
+    print("write crude data\n[START]")
+    start_time = time.time()
+    f = open(RESULTS_PATH + "/" + CRUDE_RESULTS_BASENAME + str(classification) + ".csv", 'a')
 
     for featureset in clf.classifications[classification]:
         f.write(",".join([str(v) for v in featureset]) + "\n")
 
     f.close()
+    print("[DONE] %s in seconds \n" % str(time.time() - start_time))
 
     # write unnormalized features of this cluster
 
-    f = open(RESULTS_PATH + "/" + RESULTS_BASENAME + str(classification) + ".out", 'a')
+    print("write unnormalized data\n[START]")
+    start_time = time.time()
+    f = open(RESULTS_PATH + "/" + RESULTS_BASENAME + str(classification) + ".csv", 'a')
 
     unnormalized_dataset = []
     for featureset in clf.classifications[classification]:
@@ -63,14 +73,35 @@ for classification in clf.classifications:
         f.write(",".join(values) + "\n")
 
     f.close()
+    print("[DONE] %s in seconds \n" % str(time.time() - start_time))
 
     # stats on this cluster
 
-    print(get_col_values_percentages(unnormalized_dataset, 0))
+    print("write stats on this cluster\n[START]")
+    start_time = time.time()
+    f = open(RESULTS_PATH + "/" + STATS_RESULTS_BASENAME + str(classification) + ".txt", 'a')
 
-    min, max, mean = get_col_mean_value(clf.classifications[classification], 1)
-    print(labels[1] + " on %d profiles: min %f - max %f - mean %f" % (len(clf.classifications[classification]), min, max, mean))
+    f.write('=' * (len(str(classification)) + 4 + 8) + "\n")
+    f.write("= cluster " + str(classification) + " =\n")
+    f.write('=' * (len(str(classification)) + 4 + 8) + "\n\n")
 
-    print(get_col_values_percentages(unnormalized_dataset, 2))
+    f.write('Features in this cluster : ' + str(len(clf.classifications[classification])) + '\n\n')
+
+    for i in range(len(labels_names)):
+
+        f.write('-' * (len(labels_names[i]) + 4) + "\n")
+        f.write("- " + labels_names[i].upper() + " -\n")
+        f.write('-' * (len(labels_names[i]) + 4) + "\n\n")
+
+        if labels_stats[i] == STATS_PERCENTAGE_SYMBOL:
+            f.write(stringify_dic(get_col_values_percentages(unnormalized_dataset, i)))
+        elif labels_stats[i] == STATS_MEAN_SYMBOL:
+            min, max, mean = get_col_mean_value(clf.classifications[classification], i)
+            f.write("min %f\nmax %f\nmean %f" % (min, max, mean))
+
+        f.write('\n\n')
+
+    f.close()
+    print("[DONE] %s in seconds \n" % str(time.time() - start_time))
 
     print("=====================\n")
