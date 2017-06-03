@@ -7,22 +7,23 @@ import csv
 
 from file_functions import *
 from normalize_functions import *
+from stats_functions import *
 from K_Means import K_Means
 
 DATASETS_PATH = '../assets/datasets/'
-DATA_FILENAME = 'example4.csv'
-LABELS_FILENAME = 'example4_labels.csv'
+DATA_FILENAME = 'example3.csv'
+LABELS_FILENAME = 'example3_labels.csv'
 
 RESULTS_PATH = "results"
 RESULTS_BASENAME = 'cluster_'
 CRUDE_RESULTS_BASENAME = "crude_cluster_"
-K = 6
+K = 4
 
-labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME)
+labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME)[0]
 dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME)
 
 normalized_columns, normalizations_values, dataset = normalize(dataset)
-print(dataset)
+print(labels)
 
 X = np.array(dataset)
 
@@ -46,10 +47,9 @@ for classification in clf.classifications:
 
     # write unnormalized features of this cluster
 
-    print(normalized_columns)
-
     f = open(RESULTS_PATH + "/" + RESULTS_BASENAME + str(classification) + ".out", 'a')
 
+    unnormalized_dataset = []
     for featureset in clf.classifications[classification]:
         values = []
 
@@ -59,8 +59,18 @@ for classification in clf.classifications:
             else:
                 values.append(str(featureset[i]))
 
+        unnormalized_dataset.append(values)
         f.write(",".join(values) + "\n")
 
     f.close()
+
+    # stats on this cluster
+
+    print(get_col_values_percentages(unnormalized_dataset, 0))
+
+    min, max, mean = get_col_mean_value(clf.classifications[classification], 1)
+    print(labels[1] + " on %d profiles: min %f - max %f - mean %f" % (len(clf.classifications[classification]), min, max, mean))
+
+    print(get_col_values_percentages(unnormalized_dataset, 2))
 
     print("=====================\n")
