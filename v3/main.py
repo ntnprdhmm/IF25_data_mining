@@ -12,9 +12,10 @@ from stats_functions import *
 from K_Means import K_Means
 
 DATASETS_PATH = '../assets/datasets/'
-DATA_FILENAME = 'example3.csv'
-LABELS_FILENAME = 'example3_labels.csv'
-CSV_SEPARATOR = ','
+DATA_FILENAME = 'twitter/collecte_libre.csv'
+LABELS_FILENAME = 'twitter/collecte_libre_labels.csv'
+CSV_SEPARATOR = ';'
+
 RESULTS_PATH = "results"
 RESULTS_BASENAME = 'cluster_'
 CRUDE_RESULTS_BASENAME = "crude_cluster_"
