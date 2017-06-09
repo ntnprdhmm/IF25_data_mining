@@ -26,7 +26,7 @@ K = 5
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]
 labels_stats = labels[1]
-dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME, CSV_SEPARATOR)
+dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME, CSV_SEPARATOR, len(labels_names))
 
 normalized_columns, normalizations_values, dataset = normalize(dataset)
 
