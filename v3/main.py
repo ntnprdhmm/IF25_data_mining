@@ -14,7 +14,7 @@ from K_Means import K_Means
 DATASETS_PATH = '../assets/datasets/'
 DATA_FILENAME = 'example3.csv'
 LABELS_FILENAME = 'example3_labels.csv'
-
+CSV_SEPARATOR = ','
 RESULTS_PATH = "results"
 RESULTS_BASENAME = 'cluster_'
 CRUDE_RESULTS_BASENAME = "crude_cluster_"
@@ -23,10 +23,10 @@ STATS_PERCENTAGE_SYMBOL = "p"
 STATS_MEAN_SYMBOL = "m"
 K = 5
 
-labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME)
+labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]
 labels_stats = labels[1]
-dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME)
+dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME, CSV_SEPARATOR)
 
 normalized_columns, normalizations_values, dataset = normalize(dataset)
 

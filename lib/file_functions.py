@@ -3,14 +3,14 @@ import os
 """ Read a csv dataset into a list
 	Return this list
 """
-def read_csv_dataset(f):
+def read_csv_dataset(f, separator = ','):
 	data = []
 	readfile = open(f, 'r')
 	readlines = readfile.readlines()
 	for line in readlines:
 		line = line.rstrip() # remove the \n
 		row = []
-		for v in line.split(','):
+		for v in line.split(separator):
 			row.append(float(v) if isfloat(v) else v)
 		data.append(row)
 	return data

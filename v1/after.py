@@ -14,7 +14,7 @@ from K_Means import K_Means
 DATASETS_PATH = '../assets/datasets/'
 FILENAME = 'example1.csv'
 COLORS = 10 * ['g', 'r', 'c', 'b', 'k']
-K = 3
+K = 5
 
 dataset = read_csv_dataset(DATASETS_PATH + FILENAME)
 X = np.array(dataset)
