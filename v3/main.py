@@ -19,8 +19,6 @@ RESULTS_PATH = "results"
 RESULTS_BASENAME = 'cluster_'
 CRUDE_RESULTS_BASENAME = "crude_cluster_"
 STATS_RESULTS_BASENAME = "stats_cluster_"
-STATS_PERCENTAGE_SYMBOL = "p"
-STATS_MEAN_SYMBOL = "m"
 K = 5
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
@@ -93,11 +91,12 @@ for classification in clf.classifications:
         f.write("- " + labels_names[i].upper() + " -\n")
         f.write('-' * (len(labels_names[i]) + 4) + "\n\n")
 
-        if labels_stats[i] == STATS_PERCENTAGE_SYMBOL:
+        if labels_stats[i] == 1:
+            if isfloat(unnormalized_dataset[0][i]):
+                min, max, mean = get_col_mean_value(clf.classifications[classification], i)
+                f.write("min %f\nmax %f\nmean %f" % (min, max, mean))
+                f.write('\n\n')
             f.write(stringify_dic(get_col_values_percentages(unnormalized_dataset, i)))
-        elif labels_stats[i] == STATS_MEAN_SYMBOL:
-            min, max, mean = get_col_mean_value(clf.classifications[classification], i)
-            f.write("min %f\nmax %f\nmean %f" % (min, max, mean))
 
         f.write('\n\n')
 
