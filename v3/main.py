@@ -12,8 +12,8 @@ from stats_functions import *
 from K_Means import K_Means
 
 DATASETS_PATH = '../assets/datasets/'
-DATA_FILENAME = 'twitter/collecte_libre.csv'
-LABELS_FILENAME = 'twitter/collecte_libre_labels.csv'
+DATA_FILENAME = 'twitter/collecte_manchester.csv'
+LABELS_FILENAME = 'twitter/collecte_manchester_labels.csv'
 CSV_SEPARATOR = ';'
 
 RESULTS_PATH = "results"
@@ -29,7 +29,7 @@ dataset = read_csv_dataset(DATASETS_PATH + DATA_FILENAME, CSV_SEPARATOR, len(lab
 
 normalized_columns, normalizations_values, dataset = normalize(dataset)
 
-X = np.array(dataset)
+X = np.array(dataset, dtype=np.float_)
 
 clf = K_Means(K)
 clf.fit(X)
