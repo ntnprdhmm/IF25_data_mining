@@ -12,6 +12,10 @@ v2 can handle n-dimensions dataset and display basics results in the console.
 
 v3 can handle n-dimensions data, normalize data and out detailled results for each cluster in files.
 
+## v4
+
+With v4, you can run k_means for a list of given values for K.
+
 ## file_functions.py
 
 **/lib/file_functions.py**

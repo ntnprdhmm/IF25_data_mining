@@ -1,4 +1,5 @@
 import os
+import shutil
 
 """ Read a csv dataset into a list
 	Return this list
@@ -20,12 +21,15 @@ def read_csv_dataset(f, separator = ',', length = None):
 			print("[REJECTED] : " + line)
 	return data
 
-""" Remove all files in the given directory
+""" Remove all in a folder
 """
 def empty_dir(dirpath):
 	if os.path.isdir(dirpath):
 		for f in os.listdir(dirpath):
-			os.remove(dirpath + "/" + f)
+			if os.path.isdir(dirpath + "/" + f):
+				shutil.rmtree(dirpath + "/" + f)
+			else:
+				os.remove(dirpath + "/" + f)
 
 """ Check if the value can be converted to float
 """

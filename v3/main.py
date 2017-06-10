@@ -20,7 +20,7 @@ RESULTS_PATH = "results"
 RESULTS_BASENAME = 'cluster_'
 CRUDE_RESULTS_BASENAME = "crude_cluster_"
 STATS_RESULTS_BASENAME = "stats_cluster_"
-K = 2
+K = 10
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]
