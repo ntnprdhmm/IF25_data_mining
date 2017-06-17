@@ -15,13 +15,15 @@ from normalize_functions import *
 from stats_functions import *
 from K_Means import K_Means
 
-DATASETS_PATH = '../assets/datasets/'
-DATA_FILENAME = 'twitter/collecte_manchester_splitted.csv'
-LABELS_FILENAME = 'twitter/collecte_manchester_labels.csv'
+DATASETS_PATH = '../assets/datasets/twitter/'
+DATASET_NAME = 'collecte_libre'
+
+DATA_FILENAME = DATASET_NAME + '.csv'
+LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 CSV_SEPARATOR = ';'
 
 RESULTS_PATH = "results"
-K_VALUES = range(2, 4)
+K_VALUES = [3, 8]
 COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k'] * 10
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
@@ -36,8 +38,9 @@ empty_dir(RESULTS_PATH)
 nb_combinations = 0
 # create a folder for each attribut combination
 for i in range(len(labels_names)):
-    for j in range(len(labels_names)):
+    for j in range(i, len(labels_names)):
         if i != j:
+
             os.makedirs(RESULTS_PATH + '/' + labels_names[i] + '_' + labels_names[j])
             nb_combinations = nb_combinations + 1
 
@@ -57,7 +60,7 @@ for K in K_VALUES:
     combinations_done = 0
     # for each attribut combination
     for i in range(len(labels_names)):
-        for j in range(len(labels_names)):
+        for j in range(i, len(labels_names)):
             if i != j:
 
                 #print("\n" + labels_names[i] + " -- " + labels_names[j])
