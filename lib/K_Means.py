@@ -55,6 +55,21 @@ class K_Means:
             if optimized:
                 break
 
+    def get_average_distance(self):
+        sum_distances = 0
+        nb_features = 0
+
+        for i in range(self.k):
+            nb_features = nb_features + len(self.classifications[i])
+
+            distances = [np.linalg.norm(self.classifications[i][0] - self.centroids[centroid]) for centroid in self.centroids]
+            centroid_coordinates = self.centroids[distances.index(min(distances))]
+
+            for feature in self.classifications[i]:
+                sum_distances = sum_distances + np.linalg.norm(centroid_coordinates - feature)
+
+        return sum_distances / nb_features
+
     """ Pick self.k points randomly in the dataset
         These points are the centroids
     """

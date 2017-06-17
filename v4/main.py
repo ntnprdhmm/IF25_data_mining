@@ -12,8 +12,10 @@ from stats_functions import *
 from K_Means import K_Means
 
 DATASETS_PATH = '../assets/datasets/'
-DATA_FILENAME = 'twitter/collecte_manchester.csv'
-LABELS_FILENAME = 'twitter/collecte_manchester_labels.csv'
+DATASET_NAME = 'collecte_manchester'
+
+DATA_FILENAME = 'twitter/' + DATASET_NAME + '.csv'
+LABELS_FILENAME = 'twitter/' + DATASET_NAME + '_labels.csv'
 CSV_SEPARATOR = ';'
 
 RESULTS_PATH = "results"
