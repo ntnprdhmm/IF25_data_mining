@@ -23,8 +23,10 @@ LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 CSV_SEPARATOR = ';'
 
 RESULTS_PATH = "results"
-K_VALUES = [3, 8]
-COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k'] * 10
+K_VALUES = [15]
+COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', "#fbb735", "#e98931", "#eb403b", "#b32E37", "#6c2a6a", "#5c4399", "#274389", "#1f5ea8", "#227FB0", "#2ab0c5", "#39c0b3"]
+
+print(plt.cm.get_cmap("hsv", 50)(2))
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]
@@ -40,7 +42,6 @@ nb_combinations = 0
 for i in range(len(labels_names)):
     for j in range(i, len(labels_names)):
         if i != j:
-
             os.makedirs(RESULTS_PATH + '/' + labels_names[i] + '_' + labels_names[j])
             nb_combinations = nb_combinations + 1
 
