@@ -1,2 +1,3 @@
 __pycache__/
-results/
+/results/find_k/*
+/results/kmeans/*

@@ -1,38 +1,87 @@
 # IF25_data_mining
 
-## v1
+K_MEANS implementation.
 
-v1 is the first K_Means implementation we did, with a short dataset in 2 dimensions.
+## datasets
 
-## v2
+**/datasets**
 
-v2 can handle n-dimensions dataset and display basics results in the console.
+### cleaner.py
 
-## v3
+***cleaner*** is a script to clean a given ***.csv*** file. It will remove all the unusable features and remove the given columns.
 
-v3 can handle n-dimensions data, normalize data and out detailled results for each cluster in files.
-
-## v4
-
-With v4, you can run k_means for a list of given values for K.
-
-## file_functions.py
-
-**/lib/file_functions.py**
-
-### read_csv_dataset
-
-import a csv file in a 2 dimensions list and remove the "unsplittable" feature. For example, if a feature's attribute uses the csv separator characters, this feature can't be splitted correctly.    
-
-## cleaner.py
-
-**/assets/datasets/cleaner.py**
-
-This script can be use to clean a dataset, by removing columns.
-
+The ***.csv*** file which contains the features.
 ```
-FEATURES_FILE_NAME = 'example_dataset.csv'
-LABELS_FILE_NAME = 'example_dataset_labels.csv'
-CSV_SEPARATOR = ','
-TO_REMOVE = ['colname1', 'colname2']
+FEATURES_FILE_NAME = 'my_dataset.csv'
 ```
+
+The ***.csv*** file which contains the columns's labels.
+```
+LABELS_FILE_NAME = 'my_dataset_labels.csv'
+```
+
+The separator used in the dataset.
+```
+CSV_SEPARATOR = ';'
+```
+
+The columns to remove
+```
+TO_REMOVE = ['sum(t.nbhashtags)']
+```
+
+### .csv files
+
+A dataset is 2 ***.csv*** files :
+- the first file contains the features. His name must be **[dataset_name].csv**
+- the second file contains the labels. His name must be **[dataset_name]_labels.csv**
+
+## main.py
+
+**/main.py**
+
+### script details
+
+This script will run the kmeans algorithm for many values of K on a given dataset.
+
+The folder that contains the dataset's files.
+```
+DATASETS_PATH = './datasets/twitter/'
+```
+
+The name of the dataset.
+```
+DATASET_NAME = 'collecte_libre_2'
+```
+
+The separator used in the dataset.
+```
+CSV_SEPARATOR = ';'
+```
+
+The values of K. **It has to be an array**, even if you want to run the algorithm for only one value of K.
+```
+K_VALUES = [2,6]
+```
+
+### output
+
+You can find the ouput of the algorithm in **/results/kmeans**.
+
+## find_k.py
+
+**/find_k.py**
+
+### script details
+
+This script is used to calculate the curve of the mean distance centroid/feature for each cluster according to the value of K for a given dataset.
+
+### output
+
+You can find the ouput of the script in **/results/find_k**.
+
+## lib
+
+**/lib**
+
+This folder contains functions and classes, used in the scripts, like the **K_Means** class to run the kmeans algorithm, or functions to read ***.csv*** files.
