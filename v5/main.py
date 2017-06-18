@@ -15,9 +15,9 @@ from normalize_functions import *
 from stats_functions import *
 from K_Means import K_Means
 
-DATASETS_PATH = '../assets/datasets/'
-DATA_FILENAME = 'twitter/collecte_manchester_splitted.csv'
-LABELS_FILENAME = 'twitter/collecte_manchester_labels.csv'
+DATASETS_PATH = '../assets/datasets/twitter/'
+DATA_FILENAME = 'collecte_manchester_splitted.csv'
+LABELS_FILENAME = 'collecte_manchester_labels.csv'
 CSV_SEPARATOR = ';'
 
 RESULTS_PATH = "results"

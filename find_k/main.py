@@ -12,15 +12,15 @@ from file_functions import *
 from normalize_functions import *
 from K_Means import K_Means
 
-DATASETS_PATH = '../assets/datasets/'
-DATASET_NAME = 'example1'
+DATASETS_PATH = '../assets/datasets/examples/'
+DATASET_NAME = 'example2'
 
 DATA_FILENAME = DATASET_NAME + '.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
-CSV_SEPARATOR = ';'
+CSV_SEPARATOR = ','
 RESULTS_PATH = "results"
 
-K_VALUES = range(2, 6)
+K_VALUES = range(2, 10)
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]

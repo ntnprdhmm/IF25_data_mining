@@ -15,15 +15,15 @@ from normalize_functions import *
 from stats_functions import *
 from K_Means import K_Means
 
-DATASETS_PATH = '../assets/datasets/twitter/'
-DATASET_NAME = 'collecte_libre'
+DATASETS_PATH = '../assets/datasets/examples/'
+DATASET_NAME = 'example2'
 
 DATA_FILENAME = DATASET_NAME + '.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
-CSV_SEPARATOR = ';'
+CSV_SEPARATOR = ','
 
 RESULTS_PATH = "results"
-K_VALUES = [15]
+K_VALUES = [2,3]
 COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', "#fbb735", "#e98931", "#eb403b", "#b32E37", "#6c2a6a", "#5c4399", "#274389", "#1f5ea8", "#227FB0", "#2ab0c5", "#39c0b3"]
 
 print(plt.cm.get_cmap("hsv", 50)(2))
@@ -39,11 +39,12 @@ empty_dir(RESULTS_PATH)
 
 nb_combinations = 0
 # create a folder for each attribut combination
+print(len(labels_names))
 for i in range(len(labels_names)):
-    for j in range(i, len(labels_names)):
-        if i != j:
-            os.makedirs(RESULTS_PATH + '/' + labels_names[i] + '_' + labels_names[j])
-            nb_combinations = nb_combinations + 1
+    for j in range(i+1, len(labels_names)):
+
+        os.makedirs(RESULTS_PATH + '/' + labels_names[i] + '_' + labels_names[j])
+        nb_combinations = nb_combinations + 1
 
 for K in K_VALUES:
 
