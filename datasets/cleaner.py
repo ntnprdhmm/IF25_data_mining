@@ -1,7 +1,7 @@
 import sys
 import os
 import time
-sys.path.append(os.path.abspath('../../lib'))
+sys.path.append(os.path.abspath('../lib'))
 
 from file_functions import *
 

@@ -1,7 +1,7 @@
 import sys
 import os
 import time
-sys.path.append(os.path.abspath('../lib'))
+sys.path.append(os.path.abspath('./lib'))
 
 import matplotlib.pyplot as plt
 from matplotlib import style
@@ -15,18 +15,16 @@ from normalize_functions import *
 from stats_functions import *
 from K_Means import K_Means
 
-DATASETS_PATH = '../assets/datasets/twitter/'
+DATASETS_PATH = './datasets/twitter/'
 DATASET_NAME = 'collecte_libre_2'
 
 DATA_FILENAME = DATASET_NAME + '.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 CSV_SEPARATOR = ';'
 
-RESULTS_PATH = "results"
+RESULTS_PATH = "./results/kmeans"
 K_VALUES = [2,6]
 COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', "#fbb735", "#e98931", "#eb403b", "#b32E37", "#6c2a6a", "#5c4399", "#274389", "#1f5ea8", "#227FB0", "#2ab0c5", "#39c0b3"]
-
-print(plt.cm.get_cmap("hsv", 50)(2))
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]
@@ -39,7 +37,6 @@ empty_dir(RESULTS_PATH)
 
 nb_combinations = 0
 # create a folder for each attribut combination
-print(len(labels_names))
 for i in range(len(labels_names)):
     for j in range(i+1, len(labels_names)):
 
@@ -62,10 +59,7 @@ for K in K_VALUES:
     combinations_done = 0
     # for each attribut combination
     for i in range(len(labels_names)):
-        for j in range(i, len(labels_names)):
-            if i != j:
-
-                #print("\n" + labels_names[i] + " -- " + labels_names[j])
+        for j in range(i + 1, len(labels_names)):
 
                 # loop through clusters
                 for classification in clf.classifications:

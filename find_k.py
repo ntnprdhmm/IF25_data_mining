@@ -1,7 +1,7 @@
 import sys
 import os
 import time
-sys.path.append(os.path.abspath('../lib'))
+sys.path.append(os.path.abspath('./lib'))
 
 import matplotlib.pyplot as plt
 from matplotlib import style
@@ -12,13 +12,13 @@ from file_functions import *
 from normalize_functions import *
 from K_Means import K_Means
 
-DATASETS_PATH = '../assets/datasets/twitter/'
+DATASETS_PATH = './datasets/twitter/'
 DATASET_NAME = 'collecte_libre_2'
 
 DATA_FILENAME = DATASET_NAME + '.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 CSV_SEPARATOR = ';'
-RESULTS_PATH = "results"
+RESULTS_PATH = "./results/find_k"
 
 K_VALUES = range(2, 10)
 
