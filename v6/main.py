@@ -15,15 +15,15 @@ from normalize_functions import *
 from stats_functions import *
 from K_Means import K_Means
 
-DATASETS_PATH = '../assets/datasets/examples/'
-DATASET_NAME = 'example2'
+DATASETS_PATH = '../assets/datasets/twitter/'
+DATASET_NAME = 'collecte_libre_2'
 
 DATA_FILENAME = DATASET_NAME + '.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
-CSV_SEPARATOR = ','
+CSV_SEPARATOR = ';'
 
 RESULTS_PATH = "results"
-K_VALUES = [2,3]
+K_VALUES = [2,6]
 COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', "#fbb735", "#e98931", "#eb403b", "#b32E37", "#6c2a6a", "#5c4399", "#274389", "#1f5ea8", "#227FB0", "#2ab0c5", "#39c0b3"]
 
 print(plt.cm.get_cmap("hsv", 50)(2))

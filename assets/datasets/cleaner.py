@@ -6,10 +6,10 @@ sys.path.append(os.path.abspath('../../lib'))
 from file_functions import *
 
 # files and columns to remove
-FEATURES_FILE_NAME = 'twitter/collecte_manchester.csv'
-LABELS_FILE_NAME = 'twitter/collecte_manchester_labels.csv'
+FEATURES_FILE_NAME = 'twitter/collecte_libre_2.csv'
+LABELS_FILE_NAME = 'twitter/collecte_libre_2_labels.csv'
 CSV_SEPARATOR = ';'
-TO_REMOVE = ['Name', 'user_Id']
+TO_REMOVE = ['sum(t.nbhashtags)']
 
 # load files
 labels = read_csv_dataset(LABELS_FILE_NAME, CSV_SEPARATOR)
