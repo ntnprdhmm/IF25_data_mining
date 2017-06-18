@@ -36,6 +36,13 @@ A dataset is 2 ***.csv*** files :
 - the first file contains the features. His name must be **[dataset_name].csv**
 - the second file contains the labels. His name must be **[dataset_name]_labels.csv**
 
+### remove n first lines from file
+
+Unix cmd :
+```
+sed -i 1,[nb lines to remove]d [file path]
+```
+
 ## main.py
 
 **/main.py**

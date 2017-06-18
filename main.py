@@ -16,11 +16,11 @@ from stats_functions import *
 from K_Means import K_Means
 
 DATASETS_PATH = './datasets/twitter/'
-DATASET_NAME = 'collecte_libre_2'
+DATASET_NAME = 'manchester'
 CSV_SEPARATOR = ';'
-K_VALUES = [2,6]
+K_VALUES = [2,9]
 
-DATA_FILENAME = DATASET_NAME + '.csv'
+DATA_FILENAME = DATASET_NAME + '_reduced2.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 RESULTS_PATH = "./results/kmeans"
 COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', "#fbb735", "#e98931", "#eb403b", "#b32E37", "#6c2a6a", "#5c4399", "#274389", "#1f5ea8", "#227FB0", "#2ab0c5", "#39c0b3"]
