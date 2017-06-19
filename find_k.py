@@ -15,12 +15,12 @@ from K_Means import K_Means
 DATASETS_PATH = './datasets/twitter/'
 DATASET_NAME = 'manchester'
 
-DATA_FILENAME = DATASET_NAME + '_reduced2.csv'
+DATA_FILENAME = DATASET_NAME + '_reduced.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 CSV_SEPARATOR = ';'
 RESULTS_PATH = "./results/find_k"
 
-K_VALUES = range(2, 10)
+K_VALUES = range(2, 18)
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]

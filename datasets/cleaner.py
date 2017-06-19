@@ -6,10 +6,10 @@ sys.path.append(os.path.abspath('../lib'))
 from file_functions import *
 
 # files and columns to remove
-FEATURES_FILE_NAME = 'twitter/manchester.csv'
+FEATURES_FILE_NAME = 'twitter/manchester_reduced.csv'
 LABELS_FILE_NAME = 'twitter/manchester_labels.csv'
 CSV_SEPARATOR = ';'
-TO_REMOVE = []
+TO_REMOVE = ['isProfileUseBackgroundImage', 'isGeoEnabled', 'isDefaultProfileImage', 'isDefaultProfile', 'isVerified']
 
 # load files
 labels_names = read_csv_dataset(LABELS_FILE_NAME, CSV_SEPARATOR)[0]
