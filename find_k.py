@@ -13,9 +13,9 @@ from normalize_functions import *
 from K_Means import K_Means
 
 DATASETS_PATH = './datasets/twitter/'
-DATASET_NAME = 'manchester'
+DATASET_NAME = 'libre'
 
-DATA_FILENAME = DATASET_NAME + '_reduced.csv'
+DATA_FILENAME = DATASET_NAME + '.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 CSV_SEPARATOR = ';'
 RESULTS_PATH = "./results/find_k"

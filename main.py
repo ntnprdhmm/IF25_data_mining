@@ -15,16 +15,15 @@ from normalize_functions import *
 from stats_functions import *
 from K_Means import K_Means
 
-
 DATASETS_PATH = './datasets/twitter/'
-DATASET_NAME = 'manchester'
+DATASET_NAME = 'libre'
 CSV_SEPARATOR = ';'
-K_VALUES = [4,10]
+K_VALUES = [3]
 
-DATA_FILENAME = DATASET_NAME + '_reduced.csv'
+DATA_FILENAME = DATASET_NAME + '.csv'
 LABELS_FILENAME = DATASET_NAME + '_labels.csv'
 RESULTS_PATH = "./results/kmeans"
-COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', "#fbb735", "#e98931", "#eb403b", "#b32E37", "#6c2a6a", "#5c4399", "#274389", "#1f5ea8", "#227FB0", "#2ab0c5", "#39c0b3"]
+COLORS = ["#673AB7", "#E91E63", "#3F51B5", "#2196F3", "#00BCD4", "#009688", "#4CAF50", "#CDDC39", "#FFEB3B", "#FF9800", "#795548"]
 
 labels = read_csv_dataset(DATASETS_PATH + LABELS_FILENAME, CSV_SEPARATOR)
 labels_names = labels[0]
